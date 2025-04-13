@@ -1,0 +1,31 @@
+<!-- Ha nincs egyetlen kriptovaluta sem, megjelenik ez az üzenet -->
+<div *ngIf="kriptok.length === 0">
+  Nincs megjeleníthető kriptovaluta.
+</div>
+
+<!-- Rácsos elrendezés, amely alkalmazkodik a képernyőmérethez -->
+<div class="grid-container">
+  <!-- Minden kriptovalutát külön kártyában jelenítünk meg -->
+  <div *ngFor="let kripto of kriptok" class="grid-item">
+   <!-- Kiemelt háttér Bitcoin esetén -->
+   <mat-card [ngClass]="{ 'kiemelt-kartya': kripto.nev === 'Bitcoin' }">
+    <!-- Ikon és tooltip a cím előtt -->
+    <mat-card-title>
+      <mat-icon matTooltip="Kriptovaluta ikonja">account_balance_wallet</mat-icon>
+      {{ kripto.nev }} ({{ kripto.rovidites }})
+    </mat-card-title>
+    <mat-card-content>
+      <!-- Árfolyam: zöld, ha > 3000, piros, ha kisebb -->
+      <p *ngIf="kripto.aktualisAr !== undefined"
+         [ngStyle]="{ color: kripto.aktualisAr > 3000 ? 'green' : 'red' }">
+        Árfolyam: {{ kripto.aktualisAr | arfolyam }}
+      </p>
+
+        <!-- Megjegyzés megjelenítése, ha van -->
+        <p *ngIf="kripto.megjegyzes">
+          Megjegyzés: {{ kripto.megjegyzes }}
+        </p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<form #ujForma="ngForm" (ngSubmit)="ujKriptoHozzaadasa()">
+  <mat-form-field appearance="fill">
+    <mat-label>Kriptovaluta neve</mat-label>
+    <input matInput name="nev" [(ngModel)]="ujKripto.nev" required>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Rövidítés</mat-label>
+    <input matInput name="rovidites" [(ngModel)]="ujKripto.rovidites" required maxlength="5">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Aktuális ár (USD)</mat-label>
+    <input matInput name="aktualisAr" [(ngModel)]="ujKripto.aktualisAr" type="number" min="0">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Kategória</mat-label>
+    <mat-select name="kategoria" [(ngModel)]="ujKripto.kategoria">
+      <mat-option value="nagy">Nagy kapitalizáció</mat-option>
+      <mat-option value="kozepes">Közepes kapitalizáció</mat-option>
+      <mat-option value="kis">Kis kapitalizáció</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Megjegyzés</mat-label>
+    <textarea matInput name="megjegyzes" [(ngModel)]="ujKripto.megjegyzes"></textarea>
+  </mat-form-field>
+
+  <!-- Hozzáadás gomb -->
+  <button mat-raised-button color="primary" type="submit" [disabled]="ujForma.invalid">
+    Hozzáadás
+  </button>
+</form>

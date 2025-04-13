@@ -1,0 +1,29 @@
+/* Rács konténer, ami felelős az elrendezésért */
+.grid-container {
+    display: grid; /* CSS Grid rendszert használunk */
+    grid-template-columns: 1fr; /* Alapértelmezetten 1 oszlop */
+    gap: 16px; /* Kártyák közti távolság */
+  
+    /* 600px szélesség felett 2 oszlopban jelenjen meg */
+    @media (min-width: 600px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  
+    /* 960px szélesség felett 3 oszlopban jelenjen meg */
+    @media (min-width: 960px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  /* Minden kártya egy rács cellában van középre igazítva */
+  .grid-item {
+    display: flex;
+    justify-content: center;
+  }
+
+  /* Bitcoin kártya kiemelése sárga háttérrel */
+.kiemelt-kartya {
+    background-color: #ffe082;
+  }
+  
+  
